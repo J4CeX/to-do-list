@@ -20,7 +20,11 @@
 
   /* rest */
   --SHADOW-COLOR-1: #000;
-  --SHADOW-COLOR-2: #fff
+  --SHADOW-COLOR-2: #fff;
+
+  /* list */
+  --LIST-HEADER-BGCOLOR: #0016C1;
+  --LIST-BGCOLOR: #fff;
 }
 
 html {
@@ -72,12 +76,54 @@ main {
   flex-wrap: nowrap;
   align-items: center;
   box-shadow: 0 0 4px var(--SHADOW-COLOR-1);
-
-  justify-content: center;
 }
 
-article {
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  margin-top: 40px;
   width: 70%;
+  border: 1px solid #000;
+}
+
+.header {
+  padding: 0.75rem;
+  width: 100%;
+  text-align: center;
+  border-bottom: 1px solid #000;
+  color: var(--HEADER-COLOR);
+  background-color: var(--LIST-HEADER-BGCOLOR);
+}
+
+.list {
+  list-style: none;
+  width: 100%;
+}
+
+.list li {
+  width: 100%;
+  height: 60px;
+  font-size: 1.5rem;
+  padding: 0.25rem 0.5rem;
+  border: 1px solid #000;
+  display: flex;
+  position: relative;
+  background-color: var(--LIST-BGCOLOR);
+}
+
+.remove {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 60px;
+  font-size: 1.5rem;
+  background-color: #C90000;
+  color: #fff;
+  border: none;
+  border-left: 1px solid #000;
 }
 
 /* footer */
