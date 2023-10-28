@@ -1,52 +1,39 @@
-let list = [{
-  id: 1,
-  content: "task1",
-  hidden: true
-}, {
-  id: 2,
-  content: "task2",
-  hidden: true
-}, {
-  id: 3,
-  content: "task3",
-  hidden: true
-}, {
-  id: 4,
-  content: "task4",
-  hidden: true
-}];
+const addInput = document.querySelector('.add-input');
+const listContainer = document.querySelector('.list-container');
 
-const add = `<li><button class="add">+</button></li>`;
-const toDoList = document.querySelector(".list");
+const addButton = document.querySelector('.add-button');
 
-const actualise = () => {
-  let listContent = '';
-  list.forEach((task) => {
-    listContent += `
-      <li><button class="check check-button"><img src="check-mark-button.png" alt="check" width="60px" height="60px" class="hidden"></button><p class="content">${task.content}</p><button class="remove remove-button">x</button></li>
-    `;
-  });
-  toDoList.innerHTML = listContent + add;
+addButton.addEventListener('click', () => {
+  if(addInput.value === '') {
+    alert("it's empty!");
+  } else {
+    let li = document.createElement("li");
+    li.innerText = addInput.value;
+    listContainer.appendChild(li);
+    let span = document.createElement("span");
+    span.innerText = "\u00d7";
+    li.appendChild(span);
+  }
+  addInput.value = '';
+  setData();
+});
 
-  const addButton = document.querySelector('.add');
-  addButton.addEventListener('click', () => {
-    list.push({
-      id: list.length+1,
-      content: `task${list.length+1}`
-    });
-    actualise();
-  });
-};
+listContainer.addEventListener('click', (event) => {
+  if(event.target.tagName === "LI") {
+    event.target.classList.toggle("checked");
+    setData();
+  } else if (event.target.tagName === "SPAN") {
+    event.target.parentElement.remove();
+    setData();
+  }
+});
 
-const removeTask = (taskId) => {
-  newList = [];
-  list.forEach((element) => {
-    if(element.id !== taskId) {
-      newList.push(element);
-    }
-  });
-  list = newList;
-  actualise();
+const setData = () => {
+  localStorage.setItem("data", JSON.stringify(listContainer.innerHTML));
 }
 
-actualise();
+const getData = () => {
+  listContainer.innerHTML = JSON.parse(localStorage.getItem("data"));
+}
+
+getData();
