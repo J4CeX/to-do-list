@@ -6,11 +6,12 @@
 
 :root {
   /* header */
-  --HEADER-BGCOLOR: #333;
+  --HEADER-BGCOLOR: #202020;
   --HEADER-COLOR: #fff;
 
   /* main */
-  --MAIN-BGCOLOR: #dfdfdf;
+  --MAIN-BGCOLOR-START: #F72585;
+  --MAIN-BGCOLOR-END: #4CC9F0;
   --MAIN-COLOR: #131313;
   --SQUARE-BGCOLOR: #fff;
 
@@ -67,15 +68,14 @@ header .logo a:any-link {
 
 main {
   min-height: 100vh;
-  width: 80vw;
-  background-color: var(--MAIN-BGCOLOR);
+  width: 100%;
+  background: linear-gradient(45deg, var(--MAIN-BGCOLOR-START), var(--MAIN-BGCOLOR-END));
   color: var(--MAIN-COLOR);
-  margin: 50px auto 0;
+  margin-top: 50px;
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
   align-items: center;
-  box-shadow: 0 0 4px var(--SHADOW-COLOR-1);
 }
 
 .to-do-list-app {
@@ -83,8 +83,8 @@ main {
   flex-direction: column;
   justify-content: center;
   justify-content: start;
-  margin-top: 40px;
-  width: 70%;
+  margin-top: 4rem;
+  width: 70vh;
   box-shadow: 0 0 3px var(--SHADOW-COLOR-1);
   border-radius: 15px;
   background-color: #fff;
