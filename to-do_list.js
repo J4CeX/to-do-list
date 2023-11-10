@@ -8,10 +8,12 @@ addButton.addEventListener('click', () => {
     alert("it's empty!");
   } else {
     let li = document.createElement("li");
-    li.innerText = addInput.value;
+    let p = document.createElement("p");
+    p.innerText = addInput.value;
     listContainer.appendChild(li);
     let span = document.createElement("span");
     span.innerText = "\u00d7";
+    li.appendChild(p);
     li.appendChild(span);
   }
   addInput.value = '';
